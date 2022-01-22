@@ -18,9 +18,17 @@ struct ContentView: View {
                 
                 HeaderView()
                 
-                CardView()
-                
-                TabsView()
+                ZStack(alignment: .top) {
+                    CardView()
+                    
+                    VStack {
+                        Spacer()
+                        
+                        TabsView()
+                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 16, trailing: 0))
+                    }
+                    .frame(alignment: .bottom)
+                }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         }

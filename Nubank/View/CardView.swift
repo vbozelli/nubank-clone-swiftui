@@ -8,10 +8,63 @@
 import SwiftUI
 
 struct CardView: View {
+    //MARK: Variables
+    @State fileprivate var offsetY = CGFloat.zero
+    @State fileprivate var accumulatorOffset = CGFloat.zero
+    @State fileprivate var initialY = CGFloat.zero
+    
     //MARK: Body
     var body: some View {
+        let dragGesture = DragGesture().onChanged( { gesture in
+            var offset = gesture.translation.height
+            if offset <= -350 {
+                offset = -50
+            }
+            else if offset >= 380 {
+                offset = 432
+            }
+            if offsetY + offset < initialY {
+                offsetY = 0
+            }
+            else {
+                offsetY = offset
+            }
+        }).onEnded({ _ in
+            accumulatorOffset += offsetY
+            
+            var opened = false
+            
+            if offsetY >= 100 {
+                opened = true
+            }
+            else {
+                //offsetY = accumulatorOffset
+                accumulatorOffset = 0
+            }
+            
+            var toValue = CGFloat.zero
+            
+            if opened {
+                toValue = 380
+                accumulatorOffset = 380
+            }
+            else {
+                accumulatorOffset = .zero
+            }
+            
+            withAnimation(.linear(duration: 0.2)) {
+                self.offsetY = toValue
+            }
+        })
+        
         ZStack(alignment: .leading) {
             Color.white
+            
+            GeometryReader { geometry -> Text in
+                let frame = geometry.frame(in: .global)
+                initialY = frame.origin.y
+                return Text("")
+            }
             
             VStack(alignment: .leading) {
                 Text("Saldo disponível")
@@ -28,6 +81,8 @@ struct CardView: View {
         .frame(maxHeight: 400)
         .cornerRadius(4)
         .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
+        .offset(y: offsetY)
+        .gesture(dragGesture)
     }
 }
 
