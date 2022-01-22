@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		552B1E40279C8105003788E8 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552B1E3F279C8105003788E8 /* HeaderView.swift */; };
+		552B1E42279C816E003788E8 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552B1E41279C816E003788E8 /* CardView.swift */; };
+		552B1E44279C8195003788E8 /* TabItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552B1E43279C8195003788E8 /* TabItemView.swift */; };
+		552B1E46279C8239003788E8 /* TabsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552B1E45279C8239003788E8 /* TabsView.swift */; };
+		553F46B1279AF1FC00F982F8 /* TabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553F46B0279AF1FC00F982F8 /* TabItem.swift */; };
 		554024E3279509160049425F /* NubankApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554024E2279509160049425F /* NubankApp.swift */; };
 		554024E5279509160049425F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554024E4279509160049425F /* ContentView.swift */; };
 		554024E7279509180049425F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 554024E6279509180049425F /* Assets.xcassets */; };
@@ -14,6 +19,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		552B1E3F279C8105003788E8 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		552B1E41279C816E003788E8 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		552B1E43279C8195003788E8 /* TabItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItemView.swift; sourceTree = "<group>"; };
+		552B1E45279C8239003788E8 /* TabsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabsView.swift; sourceTree = "<group>"; };
+		553F46B0279AF1FC00F982F8 /* TabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItem.swift; sourceTree = "<group>"; };
 		554024DF279509160049425F /* Nubank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nubank.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		554024E2279509160049425F /* NubankApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NubankApp.swift; sourceTree = "<group>"; };
 		554024E4279509160049425F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -32,6 +42,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		553F46AE279AF1CB00F982F8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				554024E4279509160049425F /* ContentView.swift */,
+				552B1E3F279C8105003788E8 /* HeaderView.swift */,
+				552B1E41279C816E003788E8 /* CardView.swift */,
+				552B1E43279C8195003788E8 /* TabItemView.swift */,
+				552B1E45279C8239003788E8 /* TabsView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		553F46AF279AF1E100F982F8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				553F46B0279AF1FC00F982F8 /* TabItem.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		554024D6279509160049425F = {
 			isa = PBXGroup;
 			children = (
@@ -51,8 +81,9 @@
 		554024E1279509160049425F /* Nubank */ = {
 			isa = PBXGroup;
 			children = (
+				553F46AF279AF1E100F982F8 /* Model */,
+				553F46AE279AF1CB00F982F8 /* View */,
 				554024E2279509160049425F /* NubankApp.swift */,
-				554024E4279509160049425F /* ContentView.swift */,
 				554024E6279509180049425F /* Assets.xcassets */,
 				554024E8279509180049425F /* Preview Content */,
 			);
@@ -138,7 +169,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				554024E5279509160049425F /* ContentView.swift in Sources */,
+				552B1E46279C8239003788E8 /* TabsView.swift in Sources */,
 				554024E3279509160049425F /* NubankApp.swift in Sources */,
+				553F46B1279AF1FC00F982F8 /* TabItem.swift in Sources */,
+				552B1E44279C8195003788E8 /* TabItemView.swift in Sources */,
+				552B1E40279C8105003788E8 /* HeaderView.swift in Sources */,
+				552B1E42279C816E003788E8 /* CardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
