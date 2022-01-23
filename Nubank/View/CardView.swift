@@ -9,62 +9,48 @@ import SwiftUI
 
 struct CardView: View {
     //MARK: Variables
+    @Binding var opacity: CGFloat
+    @State fileprivate var opened = false
     @State fileprivate var offsetY = CGFloat.zero
-    @State fileprivate var accumulatorOffset = CGFloat.zero
-    @State fileprivate var initialY = CGFloat.zero
     
     //MARK: Body
     var body: some View {
-        let dragGesture = DragGesture().onChanged( { gesture in
-            var offset = gesture.translation.height
-            if offset <= -350 {
-                offset = -50
+        let dragGesture = DragGesture(minimumDistance: 0).onChanged( { gesture in
+            let offset = gesture.translation.height
+            if offset < 0 {
+                if offset <= -50 {
+                    opened = false
+                }
+                else {
+                    opened = true
+                }
             }
-            else if offset >= 380 {
-                offset = 432
-            }
-            if offsetY + offset < initialY {
-                offsetY = 0
-            }
-            else {
+            else if offset > 0 {
+                if offset >= 50 {
+                    opened = true
+                }
+                else {
+                    opened = false
+                }
                 offsetY = offset
             }
         }).onEnded({ _ in
-            accumulatorOffset += offsetY
-            
-            var opened = false
-            
-            if offsetY >= 100 {
-                opened = true
-            }
-            else {
-                //offsetY = accumulatorOffset
-                accumulatorOffset = 0
-            }
-            
-            var toValue = CGFloat.zero
+            var offset = CGFloat.zero
+            var opacity = CGFloat(1)
             
             if opened {
-                toValue = 380
-                accumulatorOffset = 380
-            }
-            else {
-                accumulatorOffset = .zero
+                offset = 380
+                opacity = 0
             }
             
             withAnimation(.linear(duration: 0.2)) {
-                self.offsetY = toValue
+                self.offsetY = offset
+                self.opacity = opacity
             }
         })
         
         ZStack(alignment: .leading) {
             Color.white
-            
-            GeometryReader { geometry -> Text in
-                let frame = geometry.frame(in: .global)
-                initialY = frame.origin.y
-                return Text("")
-            }
             
             VStack(alignment: .leading) {
                 Text("Saldo disponível")
@@ -83,11 +69,5 @@ struct CardView: View {
         .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
         .offset(y: offsetY)
         .gesture(dragGesture)
-    }
-}
-
-struct CardView_Previews: PreviewProvider {
-    static var previews: some View {
-        CardView()
     }
 }

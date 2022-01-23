@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
+    //MARK: Variables
+    @State fileprivate var opacity = CGFloat(1)
+    
     //MARK: Body
     var body: some View {
         ZStack {
@@ -19,12 +22,12 @@ struct ContentView: View {
                 HeaderView()
                 
                 ZStack(alignment: .top) {
-                    CardView()
+                    CardView(opacity: $opacity)
                     
                     VStack {
                         Spacer()
                         
-                        TabsView()
+                        TabsView(opacity: $opacity)
                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 16, trailing: 0))
                     }
                     .frame(alignment: .bottom)

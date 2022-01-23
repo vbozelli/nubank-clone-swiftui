@@ -17,6 +17,9 @@ struct TabsView: View {
         TabItem(id: 4, text: "Bloquear cartão")
     ]
     
+    //MARK: Variables
+    @Binding var opacity: CGFloat
+    
     //MARK: Body
     var body: some View {
         let tabItemHeight = TabItemView.TAB_ITEM_HEIGHT
@@ -29,12 +32,8 @@ struct TabsView: View {
             }
             .frame(width: CGFloat(tabItems.count) * TabItemView.TAB_ITEM_WIDTH, height: tabItemHeight)
             .padding(EdgeInsets(top: 0, leading: 32, bottom: 0, trailing: 32))
-        }.frame(height: tabItemHeight)
-    }
-}
-
-struct TabsView_Previews: PreviewProvider {
-    static var previews: some View {
-        TabsView()
+        }
+        .frame(height: tabItemHeight)
+        .opacity(opacity)
     }
 }
